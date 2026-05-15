@@ -1,15 +1,30 @@
 const express = require('express')
+const mongoose = require('mongoose') /* Import mongoose library to map the db */
 require('dotenv').config()  /* Loads the env file */
 
 const app = express()
 
+/* middleware */
 app.use(express.json())
 
-app.get('/', (req, res)=> {
-    res.status(200).json({message: 'GlobalTNA API is running'})
+/* test route */
+app.get('/', (req, res) => {
+    res.status(200).json({ message: 'GlobalTNA API is running' })
 })
 
-const PORT = process.env.PORT
-app.listen(PORT, ()=> {
-    console.log(`Server running on port ${PORT}`)
-})
+/*Connect to MongoDB, then start the server */
+mongoose.connect(process.env.MONGO_URI).then(() => {
+    console.log('Successfully Connected to MongoDB...')
+    app.listen(process.env.PORT, () => {
+        console.log(`server started to running on port ${process.env.PORT}`)
+    })
+}).catch((err) => {
+        console.error('MongoDB connection failed:', err.message)
+        process.exit(1) /*Program exist with an error */
+    })
+
+
+// const PORT = process.env.PORT
+// app.listen(PORT, ()=> {
+//     console.log(`Server running on port ${PORT}`)
+// })

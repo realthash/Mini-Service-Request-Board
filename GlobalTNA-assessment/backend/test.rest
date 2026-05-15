@@ -1,0 +1,2 @@
+### GET endpoint for '/'
+GET http://localhost:5000
