@@ -3,7 +3,7 @@ const mongoose = require('mongoose') /* Import mongoose library to map the db */
 require('dotenv').config()  /* Loads the env file */
 
 const jobRoutes = require('./routes/jobs')
-const JobReq = require('./models/JobReq')
+const errorHandler = require('./middleware/errorHandler')
 
 const app = express()
 
@@ -17,6 +17,9 @@ app.get('/', (req, res) => {
 
 
 app.use('/api/jobs', jobRoutes)
+
+/* Global error handler */
+app.use(errorHandler)
 
 /*Connect to MongoDB, then start the server */
 mongoose.connect(process.env.MONGO_URI)

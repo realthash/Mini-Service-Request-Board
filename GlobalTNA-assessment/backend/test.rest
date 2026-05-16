@@ -33,3 +33,25 @@ Content-Type: application/json
 
 ### DELETE endpoint for deletion of specific user
 DELETE http://localhost:5000/api/jobs/6a0825fd62a8b4160f89073f
+
+
+### ERROR handling : Missing required fields (ValidationError)
+POST http://localhost:5000/api/jobs
+Content-Type: application/json
+
+{
+    "category": "Plumbing"
+}
+
+### ERROR handling : Invalid ID format (CastError)
+GET http://localhost:5000/api/jobs/abc123
+
+
+### ERROR handling : Test 3 — Invalid status value
+
+PATCH http://localhost:5000/api/jobs/6a08257162a8b4160f89073d
+Content-Type: application/json
+
+{
+    "status": "Completed"
+}
