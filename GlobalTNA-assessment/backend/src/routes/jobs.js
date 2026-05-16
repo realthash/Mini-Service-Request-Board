@@ -46,8 +46,8 @@ router.get('/', async (req, res, next) => {
  */
 router.get('/:id', async (req, res, next) => {
     try {
-        const targetId = req.params.id
-        const result = await JobReq.findById(targetId)
+        const requestId = req.params.id
+        const result = await JobReq.findById(requestId)
 
         if (!result) {
             return res.status(404).json({ message: 'Job request not found.' })
@@ -59,5 +59,46 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
+/**
+ * Route:PATCH /api/jobs/:id
+ * Note: only patch the status property
+ */
+router.patch('/:id', async (req, res, next) => {
+    try {
+        /**
+         * behave: extract the status from the request body and return the document after the update and run schema validation on update
+         */
+        const { status } = req.body
+        const result = await JobReq.findByIdAndUpdate(req.params.id, { status }, { new: true, runValidators: true })
+
+        if (!result) {
+            return res.status(404).json({ message: 'Job is not found' })
+        }
+
+        res.status(200).json(result)
+
+    } catch (err) {
+        next(err)
+    }
+})
+
+/**
+ * Route: DELETE '/api/jobs/:id'
+ * behave: find the request id and delete if it is exist. else return a 404 error
+ */
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const result = await JobReq.findByIdAndDelete(req.params.id)
+
+        if (!result) {
+            return res.status(404).json({ message: 'Job is not found' })
+        }
+
+        res.status(200).json({ message: `Job Request ID ${req.params.id} removed successfully` })
+
+    } catch (err) {
+        next(err)
+    }
+})
 // Export the router so the main app can register these routes under /api/jobs.
 module.exports = router

@@ -19,5 +19,17 @@ Content-Type: application/json
 GET http://localhost:5000/api/jobs
 
 
-### GET  endpoint fot specific job
-GET http://localhost:5000/api/jobs/6a0825fd62a8b4160f89073f
+### GET endpoint fot specific job request
+GET http://localhost:5000/api/jobs/6a0863744faac5a340711c0a
+
+### PATCH endpoint to update the request's status
+
+PATCH http://localhost:5000/api/jobs/6a0863744faac5a340711c0a
+Content-Type: application/json
+
+{
+    "status": "In progress"
+}
+
+### DELETE endpoint for deletion of specific user
+DELETE http://localhost:5000/api/jobs/6a0825fd62a8b4160f89073f
