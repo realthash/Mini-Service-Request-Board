@@ -1,2 +1,16 @@
 ### GET endpoint for '/'
 GET http://localhost:5000
+
+### POST endpoint '/api/jobs' to create a valid job 
+POST http://localhost:5000/api/jobs
+Content-Type: application/json
+
+{
+    "title": "Fix bulb in kitchen",
+    "description": "The kitchen bulb has been dimed for a week",
+    "category": "Electrical",
+    "location": "Glasgow",
+    "contactName": "Kenul Smith",
+    "contactEmail": "Kenul@example.com"
+}
+
