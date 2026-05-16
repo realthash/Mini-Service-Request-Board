@@ -17,3 +17,7 @@ Content-Type: application/json
 
 ### GET edpoint for list of all jobs with optional filters
 GET http://localhost:5000/api/jobs
+
+
+### GET  endpoint fot specific job
+GET http://localhost:5000/api/jobs/6a0825fd62a8b4160f89073f
