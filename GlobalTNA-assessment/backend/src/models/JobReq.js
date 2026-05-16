@@ -15,7 +15,7 @@ const requestSchema = new mongoose.Schema(
         category: {
             type: String,
             enum: {
-                values: ['Plumbing', 'Electrical', 'Painting'],
+                values: ['Plumbing', 'Electrical', 'Painting','Joinery'],
                 message: '{VALUE} is not a valid category'
             }
         },
@@ -36,7 +36,7 @@ const requestSchema = new mongoose.Schema(
         status: {
             type: String,
             enum: {
-                values: ['Open', 'In progress', 'Closed'],
+                values: ['Open', 'In Progress', 'Closed'],
                 message: '{VALUE} is not a valid status'
             },
             default: 'Open'

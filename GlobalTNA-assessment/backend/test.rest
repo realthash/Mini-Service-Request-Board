@@ -28,7 +28,7 @@ PATCH http://localhost:5000/api/jobs/6a0863744faac5a340711c0a
 Content-Type: application/json
 
 {
-    "status": "In progress"
+    "status": "In Progress"
 }
 
 ### DELETE endpoint for deletion of specific user
