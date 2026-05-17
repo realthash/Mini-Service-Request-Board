@@ -5,6 +5,7 @@ import Link from 'next/link';
 import JobCard from './components/JobCard';
 import CategoryFilter from './components/CategoryFilter';
 import Spinner from './components/Spinner';
+import { useSearchParams } from 'next/navigation';
 
 export default function HomePage() {
 
@@ -13,6 +14,9 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const searchParams = useSearchParams();
+  const justCreated = searchParams.get('created') === 'true';
 
   // ── Effects ──────────────────────────────────────────────
   useEffect(() => {
@@ -74,6 +78,13 @@ export default function HomePage() {
       {/* Main content */}
       <div className="max-w-5xl mx-auto px-6 py-8">
 
+        {/* Success banner */}
+        {justCreated && (
+          <div className="mb-5 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+            Job request posted successfully!
+          </div>
+        )}
+        
         {/* Filter row */}
         <div className="flex items-center justify-between mb-6">
           <CategoryFilter
