@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import JobCard from './components/JobCard';
 import CategoryFilter from './components/CategoryFilter';
 import Spinner from './components/Spinner';
 import { useSearchParams } from 'next/navigation';
 
-export default function HomePage() {
+function HomePageContent() {
 
   // ── State ────────────────────────────────────────────────
   const [jobs, setJobs] = useState([]);
@@ -22,7 +22,6 @@ export default function HomePage() {
   useEffect(() => {
     fetchJobs();
   }, [selectedCategory]);
-  // runs on mount AND whenever selectedCategory changes
 
   // ── Handlers ─────────────────────────────────────────────
   async function fetchJobs() {
@@ -55,83 +54,91 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-gray-50">
 
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-5">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Service Request Board
-            </h1>
-            <p className="text-sm text-gray-500 mt-0.5">
-              Browse open home service requests
-            </p>
-          </div>
-          <Link
-            href="/jobs/new"
-            className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            + Post New Request
-          </Link>
-        </div>
-      </div>
-
-      {/* Main content */}
-      <div className="max-w-5xl mx-auto px-6 py-8">
-
-        {/* Success banner */}
-        {justCreated && (
-          <div className="mb-5 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
-            Job request posted successfully!
-          </div>
-        )}
-        
-        {/* Filter row */}
-        <div className="flex items-center justify-between mb-6">
-          <CategoryFilter
-            selected={selectedCategory}
-            onChange={setSelectedCategory}
-          />
-          {!loading && (
-            <p className="text-sm text-gray-400">
-              {jobs.length} {jobs.length === 1 ? 'request' : 'requests'} found
-            </p>
-          )}
-        </div>
-
-        {/* Loading state */}
-        {/* Loading state — NEW */}
-        {loading && <Spinner message="Loading jobs..." />}
-
-        {/* Error state */}
-        {!loading && error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
-            {error}
-          </div>
-        )}
-
-        {/* Empty state */}
-        {!loading && !error && jobs.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-gray-400 text-sm">No jobs found.</p>
+        {/* Header */}
+        <div className="bg-white border-b border-gray-200 px-6 py-5">
+          <div className="max-w-5xl mx-auto flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">
+                Service Request Board
+              </h1>
+              <p className="text-sm text-gray-500 mt-0.5">
+                Browse open home service requests
+              </p>
+            </div>
             <Link
               href="/jobs/new"
-              className="mt-3 inline-block text-blue-600 text-sm hover:underline"
+              className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
-              Be the first to post a request
+              + Post New Request
             </Link>
           </div>
-        )}
+        </div>
 
-        {/* Success state — job grid */}
-        {!loading && !error && jobs.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {jobs.map((job) => (
-              <JobCard key={job._id} job={job} />
-            ))}
+        {/* Main content */}
+        <div className="max-w-5xl mx-auto px-6 py-8">
+
+          {/* Success banner */}
+          {justCreated && (
+            <div className="mb-5 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm">
+              Job request posted successfully!
+            </div>
+          )}
+
+          {/* Filter row */}
+          <div className="flex items-center justify-between mb-6">
+            <CategoryFilter
+              selected={selectedCategory}
+              onChange={setSelectedCategory}
+            />
+            {!loading && (
+              <p className="text-sm text-gray-400">
+                {jobs.length} {jobs.length === 1 ? 'request' : 'requests'} found
+              </p>
+            )}
           </div>
-        )}
 
-      </div>
-    </main>
+          {/* Loading state */}
+          {/* Loading state — NEW */}
+          {loading && <Spinner message="Loading jobs..." />}
+
+          {/* Error state */}
+          {!loading && error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+              {error}
+            </div>
+          )}
+
+          {/* Empty state */}
+          {!loading && !error && jobs.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-gray-400 text-sm">No jobs found.</p>
+              <Link
+                href="/jobs/new"
+                className="mt-3 inline-block text-blue-600 text-sm hover:underline"
+              >
+                Be the first to post a request
+              </Link>
+            </div>
+          )}
+
+          {/* Success state — job grid */}
+          {!loading && !error && jobs.length > 0 && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {jobs.map((job) => (
+                <JobCard key={job._id} job={job} />
+              ))}
+            </div>
+          )}
+
+        </div>
+      </main>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <Suspense fallback={null}>
+      <HomePageContent />
+    </Suspense>
   );
 }
