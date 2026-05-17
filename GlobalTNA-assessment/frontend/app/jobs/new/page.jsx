@@ -72,8 +72,8 @@ export default function NewJobPage() {
         throw new Error(data.message || 'Failed to create job.');
       }
 
-      // Success — go back to home page
-      router.push('/');
+      // Success — pass a success flag via query parameter
+      router.push('/?created=true');
 
     } catch (err) {
       setError(err.message);
