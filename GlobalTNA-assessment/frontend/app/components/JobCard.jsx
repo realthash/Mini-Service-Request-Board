@@ -2,17 +2,17 @@ import Link from 'next/link';
 
 // Status badge colours — each status gets a distinct colour
 const statusStyles = {
-  'Open':        'bg-green-100 text-green-800',
+  'Open': 'bg-green-100 text-green-800',
   'In Progress': 'bg-yellow-100 text-yellow-800',
-  'Closed':      'bg-gray-100 text-gray-600',
+  'Closed': 'bg-gray-100 text-gray-600',
 };
 
 // Category badge colours
 const categoryStyles = {
-  'Plumbing':   'bg-blue-100 text-blue-800',
+  'Plumbing': 'bg-blue-100 text-blue-800',
   'Electrical': 'bg-purple-100 text-purple-800',
-  'Painting':   'bg-pink-100 text-pink-800',
-  'Joinery':    'bg-orange-100 text-orange-800',
+  'Painting': 'bg-pink-100 text-pink-800',
+  'Joinery': 'bg-orange-100 text-orange-800',
 };
 
 export default function JobCard({ job }) {
@@ -43,7 +43,11 @@ export default function JobCard({ job }) {
         {/* Bottom row — location + date */}
         <div className="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-gray-100">
           <span>📍 {job.location || 'Location not specified'}</span>
-          <span>{new Date(job.createdAt).toLocaleDateString('en-GB')}</span>
+          <span>
+            {job.createdAt
+              ? new Date(job.createdAt).toLocaleDateString('en-GB')
+              : 'N/A'}
+          </span>
         </div>
 
       </div>
