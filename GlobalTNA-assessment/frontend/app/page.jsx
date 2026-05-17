@@ -52,10 +52,10 @@ function HomePageContent() {
 
   // ── Render ───────────────────────────────────────────────
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-slate-100">
 
         {/* Header */}
-        <div className="bg-white border-b border-gray-200 px-6 py-5">
+        <div className="bg-blue-200 border-b border-gray-200 px-6 py-5">
           <div className="max-w-5xl mx-auto flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">
@@ -91,7 +91,7 @@ function HomePageContent() {
               onChange={setSelectedCategory}
             />
             {!loading && (
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-600 font-semibold">
                 {jobs.length} {jobs.length === 1 ? 'request' : 'requests'} found
               </p>
             )}

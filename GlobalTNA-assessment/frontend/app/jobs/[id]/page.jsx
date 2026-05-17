@@ -115,7 +115,7 @@ export default function JobDetailPage() {
   // ── Render: Loading state ────────────────────────────────
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-slate-100">
         <Spinner message="Loading job details..." />
       </main>
     );
@@ -124,14 +124,14 @@ export default function JobDetailPage() {
   // ── Render: Error state ──────────────────────────────────
   if (error && !job) {
     return (
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen min-h-screen bg-slate-100">
         <div className="max-w-2xl mx-auto px-6 py-12">
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm mb-4">
             {error}
           </div>
           <Link
             href="/"
-            className="text-sm text-blue-600 hover:underline"
+            className="text-sm font:semibold text-blue-600 hover:underline"
           >
             ← Back to all jobs
           </Link>
@@ -142,14 +142,14 @@ export default function JobDetailPage() {
 
   // ── Render: Success state ────────────────────────────────
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-slate-100">
 
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-5">
-        <div className="max-w-2xl mx-auto flex items-center gap-4">
+      <div className="bg-blue-200 border-b border-gray-200 px-6 py-5">
+        <div className="max-w-5xl mx-auto flex items-center gap-4">
           <Link
             href="/"
-            className="text-gray-400 hover:text-gray-600 transition-colors text-sm"
+            className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
           >
             ← Back
           </Link>
@@ -158,8 +158,8 @@ export default function JobDetailPage() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-2xl mx-auto px-6 py-8">
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+      <div className="max-w-5xl mx-auto px-6 py-8">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
 
           {/* Error banner (for update/delete errors while job is still visible) */}
           {error && (
@@ -249,7 +249,7 @@ export default function JobDetailPage() {
             {!showConfirm ? (
               <button
                 onClick={() => setShowConfirm(true)}
-                className="text-sm text-red-500 hover:text-red-700 transition-colors"
+                className="text-sm text-red-500 font-semibold hover:text-red-700 hover:scale-105 transition-all duration-300"
               >
                 Delete this job
               </button>

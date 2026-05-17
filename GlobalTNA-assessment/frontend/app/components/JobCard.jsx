@@ -18,7 +18,7 @@ const categoryStyles = {
 export default function JobCard({ job }) {
   return (
     <Link href={`/jobs/${job._id}`}>
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:shadow-md hover:border-blue-300 transition-all duration-200 cursor-pointer h-full">
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-5 hover:shadow-md hover:scale-105 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 cursor-pointer h-full">
 
         {/* Top row — category + status badges */}
         <div className="flex items-center justify-between mb-3">

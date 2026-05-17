@@ -84,14 +84,14 @@ export default function NewJobPage() {
 
   // ── Render ───────────────────────────────────────────────
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-slate-100">
 
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-6 py-5">
-        <div className="max-w-2xl mx-auto flex items-center gap-4">
+      <div className="bg-blue-200 border-b border-gray-200 px-6 py-5">
+        <div className="max-w-5xl mx-auto flex items-center gap-4">
           <Link
             href="/"
-            className="text-gray-400 hover:text-gray-600 transition-colors text-sm"
+            className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
           >
             ← Back
           </Link>
@@ -102,8 +102,8 @@ export default function NewJobPage() {
       </div>
 
       {/* Form */}
-      <div className="max-w-2xl mx-auto px-6 py-8">
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+      <div className="max-w-5xl mx-auto px-6 py-30">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
 
           {/* Error banner */}
           {error && (
@@ -115,6 +115,9 @@ export default function NewJobPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
 
             {/* Title */}
+            <div>
+                <h2 className="text-2xl font-semibold text-gray-900 pb-5">Request details</h2>
+              </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Title <span className="text-red-500">*</span>
