@@ -102,7 +102,7 @@ export default function NewJobPage() {
       </div>
 
       {/* Form */}
-      <div className="max-w-5xl mx-auto px-6 py-30">
+      <div className="max-w-5xl mx-auto px-6 py-8">
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
 
           {/* Error banner */}

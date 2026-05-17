@@ -115,7 +115,7 @@ export default function JobDetailPage() {
   // ── Render: Loading state ────────────────────────────────
   if (loading) {
     return (
-      <main className="min-h-screen bg-slate-100">
+      <main className="min-h-screen bg-slate-100 flex items-center justify-center">
         <Spinner message="Loading job details..." />
       </main>
     );
@@ -124,7 +124,7 @@ export default function JobDetailPage() {
   // ── Render: Error state ──────────────────────────────────
   if (error && !job) {
     return (
-      <main className="min-h-screen min-h-screen bg-slate-100">
+      <main className="min-h-screen bg-slate-100 flex items-center justify-center">
         <div className="max-w-2xl mx-auto px-6 py-12">
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm mb-4">
             {error}
@@ -142,7 +142,7 @@ export default function JobDetailPage() {
 
   // ── Render: Success state ────────────────────────────────
   return (
-    <main className="min-h-screen bg-slate-100">
+    <main className="min-h-screen bg-slate-100 flex flex-col">
 
       {/* Header */}
       <div className="bg-blue-200 border-b border-gray-200 px-6 py-5">
@@ -158,8 +158,9 @@ export default function JobDetailPage() {
       </div>
 
       {/* Main content */}
-      <div className="max-w-5xl mx-auto px-6 py-8">
-        <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      <div className="flex-1 flex items-center justify-center">
+        <div className="max-w-5xl mx-auto px-6 py-8 w-full">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-15">
 
           {/* Error banner (for update/delete errors while job is still visible) */}
           {error && (
@@ -169,7 +170,7 @@ export default function JobDetailPage() {
           )}
 
           {/* Category + Status row */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-8">
             <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${categoryStyles[job.category] || 'bg-gray-100 text-gray-600'}`}>
               {job.category || 'Uncategorised'}
             </span>
@@ -277,6 +278,7 @@ export default function JobDetailPage() {
           </div>
 
         </div>
+      </div>
       </div>
     </main>
   );
