@@ -15,7 +15,7 @@ const requestSchema = new mongoose.Schema(
         category: {
             type: String,
             enum: {
-                values: ['Plumbing', 'Electrical', 'Painting','Joinery'],
+                values: ['Plumbing', 'Electrical', 'Painting', 'Joinery'],
                 message: '{VALUE} is not a valid category'
             }
         },
@@ -23,7 +23,7 @@ const requestSchema = new mongoose.Schema(
             type: String,
             trim: true
         },
-        contactNumber: {
+        contactName: {
             type: String,
             trim: true
         },
