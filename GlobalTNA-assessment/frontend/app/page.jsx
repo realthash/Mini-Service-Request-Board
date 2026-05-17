@@ -52,7 +52,7 @@ function HomePageContent() {
 
   // ── Render ───────────────────────────────────────────────
   return (
-    <main className="min-h-screen bg-slate-100">
+    <main className="bg-slate-100">
 
         {/* Header */}
         <div className="bg-blue-200 border-b border-gray-200 px-6 py-5">
@@ -74,7 +74,11 @@ function HomePageContent() {
           </div>
         </div>
 
+        {/* Loading state — full screen */}
+        {loading && <Spinner message="Loading jobs..." />}
+
         {/* Main content */}
+        {!loading && (
         <div className="max-w-5xl mx-auto px-6 py-8">
 
           {/* Success banner */}
@@ -96,10 +100,6 @@ function HomePageContent() {
               </p>
             )}
           </div>
-
-          {/* Loading state */}
-          {/* Loading state — NEW */}
-          {loading && <Spinner message="Loading jobs..." />}
 
           {/* Error state */}
           {!loading && error && (
@@ -131,6 +131,7 @@ function HomePageContent() {
           )}
 
         </div>
+        )}
       </main>
   );
 }

@@ -115,7 +115,7 @@ export default function JobDetailPage() {
   // ── Render: Loading state ────────────────────────────────
   if (loading) {
     return (
-      <main className="min-h-screen bg-slate-100 flex items-center justify-center">
+      <main className="bg-slate-100">
         <Spinner message="Loading job details..." />
       </main>
     );
@@ -124,8 +124,9 @@ export default function JobDetailPage() {
   // ── Render: Error state ──────────────────────────────────
   if (error && !job) {
     return (
-      <main className="min-h-screen bg-slate-100 flex items-center justify-center">
-        <div className="max-w-2xl mx-auto px-6 py-12">
+      <main className="bg-slate-100">
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="max-w-2xl mx-auto px-6 py-12">
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm mb-4">
             {error}
           </div>
@@ -135,6 +136,7 @@ export default function JobDetailPage() {
           >
             ← Back to all jobs
           </Link>
+        </div>
         </div>
       </main>
     );
@@ -146,14 +148,17 @@ export default function JobDetailPage() {
 
       {/* Header */}
       <div className="bg-blue-200 border-b border-gray-200 px-6 py-5">
-        <div className="max-w-5xl mx-auto flex items-center gap-4">
-          <Link
-            href="/"
-            className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
-          >
-            ← Back
-          </Link>
-          <h1 className="text-xl font-bold text-gray-900">Job Details</h1>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-4 mb-1">
+            <Link
+              href="/"
+              className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
+            >
+              ← Back
+            </Link>
+            <h1 className="text-2xl font-bold text-gray-900">Job Details</h1>
+          </div>
+          <p className="text-sm text-gray-500">View and manage service request details</p>
         </div>
       </div>
 

@@ -88,16 +88,19 @@ export default function NewJobPage() {
 
       {/* Header */}
       <div className="bg-blue-200 border-b border-gray-200 px-6 py-5">
-        <div className="max-w-5xl mx-auto flex items-center gap-4">
-          <Link
-            href="/"
-            className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
-          >
-            ← Back
-          </Link>
-          <h1 className="text-xl font-bold text-gray-900">
-            Post a New Service Request
-          </h1>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex items-center gap-4 mb-1">
+            <Link
+              href="/"
+              className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
+            >
+              ← Back
+            </Link>
+            <h1 className="text-2xl font-bold text-gray-900">
+              Post a New Service Request
+            </h1>
+          </div>
+          <p className="text-sm text-gray-500">Create a new service request for your community</p>
         </div>
       </div>
 
