@@ -69,7 +69,7 @@ router.patch('/:id', async (req, res, next) => {
          * behave: extract the status from the request body and return the document after the update and run schema validation on update
          */
         const { status } = req.body
-        const result = await JobReq.findByIdAndUpdate(req.params.id, { status }, { new: true, runValidators: true })
+        const result = await JobReq.findByIdAndUpdate(req.params.id, { status }, { returnDocument: 'after', runValidators: true })
 
         if (!result) {
             return res.status(404).json({ message: 'Job is not found' })
