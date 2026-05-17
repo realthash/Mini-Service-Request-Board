@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 import Spinner from '../../components/Spinner';
 
 
@@ -132,9 +133,10 @@ export default function JobDetailPage() {
           </div>
           <Link
             href="/"
-            className="text-sm font:semibold text-blue-600 hover:underline"
+            className="text-blue-600 hover:text-blue-800 transition-colors flex items-center"
+            title="Back to all jobs"
           >
-            ← Back to all jobs
+            <IoArrowBackCircleOutline size={32} />
           </Link>
         </div>
         </div>
@@ -152,9 +154,10 @@ export default function JobDetailPage() {
           <div className="flex items-center gap-4 mb-1">
             <Link
               href="/"
-              className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
+              className="text-gray-400 hover:text-gray-600 transition-colors flex items-center"
+              title="Back"
             >
-              ← Back
+              <IoArrowBackCircleOutline size={32} />
             </Link>
             <h1 className="text-2xl font-bold text-gray-900">Job Details</h1>
           </div>

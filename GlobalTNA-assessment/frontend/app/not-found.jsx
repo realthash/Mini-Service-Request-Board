@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
 export default function NotFound() {
   return (
@@ -11,12 +12,15 @@ export default function NotFound() {
         <p className="text-sm text-gray-500 mb-6">
           The page you are looking for does not exist or has been moved.
         </p>
-        <Link
-          href="/"
-          className="bg-blue-600 text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          Back to Home
-        </Link>
+        <div className="flex justify-center mt-6">
+          <Link
+            href="/"
+            className="text-blue-600 hover:text-blue-800 transition-colors"
+            title="Back to Home"
+          >
+            <IoArrowBackCircleOutline size={48} />
+          </Link>
+        </div>
       </div>
     </main>
   );

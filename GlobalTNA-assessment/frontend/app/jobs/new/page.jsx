@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { IoArrowBackCircleOutline } from 'react-icons/io5';
 
 const CATEGORIES = ['Plumbing', 'Electrical', 'Painting', 'Joinery'];
 
@@ -92,9 +93,10 @@ export default function NewJobPage() {
           <div className="flex items-center gap-4 mb-1">
             <Link
               href="/"
-              className="text-gray-400 hover:text-gray-600 transition-colors text-sm font-semibold"
+              className="text-gray-400 hover:text-gray-600 transition-colors flex items-center"
+              title="Back"
             >
-              ← Back
+              <IoArrowBackCircleOutline size={32} />
             </Link>
             <h1 className="text-2xl font-bold text-gray-900">
               Post a New Service Request

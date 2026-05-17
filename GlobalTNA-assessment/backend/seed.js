@@ -50,7 +50,7 @@ const sampleJobs = [
     status: 'Open',
   },
   {
-    title: 'Blocked toilet — urgent',
+    title: 'Blocked toilet - urgent',
     description: 'Master bedroom ensuite toilet is completely blocked. Tried plunger with no success. Likely needs professional drain unblocking equipment.',
     category: 'Plumbing',
     location: 'Colombo',
