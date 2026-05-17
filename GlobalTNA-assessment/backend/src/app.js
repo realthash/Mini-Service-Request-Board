@@ -1,5 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose') /* Import mongoose library to map the db */
+const cors = require('cors')
+
 require('dotenv').config()  /* Loads the env file */
 
 const jobRoutes = require('./routes/jobs')
@@ -7,6 +9,7 @@ const errorHandler = require('./middleware/errorHandler')
 
 const app = express()
 
+app.use(cors())
 /* middleware */
 app.use(express.json())
 
