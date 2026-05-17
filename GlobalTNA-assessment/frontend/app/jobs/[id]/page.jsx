@@ -3,20 +3,22 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
+import Spinner from '../../components/Spinner';
+
 
 const STATUS_OPTIONS = ['Open', 'In Progress', 'Closed'];
 
 const statusStyles = {
-  'Open':        'bg-green-100 text-green-800 border-green-200',
+  'Open': 'bg-green-100 text-green-800 border-green-200',
   'In Progress': 'bg-yellow-100 text-yellow-800 border-yellow-200',
-  'Closed':      'bg-gray-100 text-gray-600 border-gray-200',
+  'Closed': 'bg-gray-100 text-gray-600 border-gray-200',
 };
 
 const categoryStyles = {
-  'Plumbing':   'bg-blue-100 text-blue-800',
+  'Plumbing': 'bg-blue-100 text-blue-800',
   'Electrical': 'bg-purple-100 text-purple-800',
-  'Painting':   'bg-pink-100 text-pink-800',
-  'Joinery':    'bg-orange-100 text-orange-800',
+  'Painting': 'bg-pink-100 text-pink-800',
+  'Joinery': 'bg-orange-100 text-orange-800',
 };
 
 export default function JobDetailPage() {
@@ -113,8 +115,8 @@ export default function JobDetailPage() {
   // ── Render: Loading state ────────────────────────────────
   if (loading) {
     return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <p className="text-gray-400 text-sm">Loading job details...</p>
+      <main className="min-h-screen bg-gray-50">
+        <Spinner message="Loading job details..." />
       </main>
     );
   }
@@ -199,10 +201,10 @@ export default function JobDetailPage() {
               <p className="text-sm text-gray-700">
                 {job.createdAt
                   ? new Date(job.createdAt).toLocaleDateString('en-GB', {
-                      day: 'numeric',
-                      month: 'long',
-                      year: 'numeric',
-                    })
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })
                   : 'N/A'}
               </p>
             </div>

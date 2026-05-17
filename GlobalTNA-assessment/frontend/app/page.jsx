@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import JobCard from './components/JobCard';
 import CategoryFilter from './components/CategoryFilter';
+import Spinner from './components/Spinner';
 
 export default function HomePage() {
 
@@ -87,11 +88,8 @@ export default function HomePage() {
         </div>
 
         {/* Loading state */}
-        {loading && (
-          <div className="flex justify-center items-center py-20">
-            <p className="text-gray-400 text-sm">Loading jobs...</p>
-          </div>
-        )}
+        {/* Loading state — NEW */}
+        {loading && <Spinner message="Loading jobs..." />}
 
         {/* Error state */}
         {!loading && error && (
