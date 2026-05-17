@@ -43,7 +43,7 @@ const requestSchema = new mongoose.Schema(
         }
     },
     {
-        timeStamps: { createdAt: true, updatedAt: false }
+        timestamps: { createdAt: true, updatedAt: false }
     }
 )
 
